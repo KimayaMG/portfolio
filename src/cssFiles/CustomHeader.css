@@ -1,0 +1,151 @@
+.ModeToggle {
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    /* Leaving some space for mobile menu button */
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+/* 
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+} */
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 0 20px;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50px;
+}
+
+.header .logoPic {
+    width: 53px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #000;
+}
+
+.header.scrolled .logo {
+    font-size: 1.8rem;
+}
+
+.header .navigation ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header .navigation ul li {
+    margin: 0 15px;
+}
+
+.header .navigation ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+}
+
+.header .navigation ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #333;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.header .navigation ul li a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.mobile-menu-button span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #333;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-button {
+        display: flex;
+    }
+
+    .header .navigation {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: all 0.4s ease;
+    }
+
+    .header .navigation.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .header .navigation ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header .navigation ul li {
+        margin: 10px 0;
+    }
+}
