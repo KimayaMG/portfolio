@@ -1,0 +1,682 @@
+/* Hero Section Base Styles */
+.hero-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: transparent !important;
+  pointer-events: none;
+}
+
+.hero-section.theme-transitioning {
+  transition: none;
+}
+
+.hero-section.scrolling-out {
+  transform: translateY(-100vh);
+  opacity: 0;
+  z-index: 500;
+  transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-section.full-viewport {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Stage 1: Typewriter Animation */
+.typewriter-container {
+  text-align: center;
+  pointer-events: auto;
+}
+
+.typewriter-text {
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Unna', serif;
+  letter-spacing: 0.02em;
+  transition: color 0.6s ease;
+}
+
+.cursor {
+  opacity: 1;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Hero Content Container */
+.hero-content {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+/* Hero Base (Circle) - Glassmorphism */
+.hero-base {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  transition: all 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: heroBaseFloat 8s ease-in-out infinite;
+}
+
+.hero-base.large-circle {
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+}
+
+@keyframes heroBaseFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+}
+
+.hero-base.expand-fade {
+  animation: expandAndFade 1.5s ease-out forwards;
+}
+
+@keyframes expandAndFade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(2);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(5);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(15);
+    opacity: 0;
+  }
+}
+
+/* Text Animations and Transitions */
+.hero-text {
+  transition: all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 20px;
+}
+
+.hello-world {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 600;
+  display: inline-block;
+  animation: slideInFromTop 1.2s ease-out;
+  transition: color 0.6s ease;
+}
+
+.comma {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 600;
+  margin-left: 4px;
+  animation: fadeIn 0.7s ease-in 1.2s both;
+  transition: color 0.6s ease;
+}
+
+.name-text {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  margin-top: 10px;
+  animation: slideInFromBottom 1.2s ease-out 0.6s both;
+  background: linear-gradient(45deg, #ffffff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.experience-text {
+  animation: textTransform 1.5s ease-in-out;
+  transition: all 0.8s ease;
+}
+
+.years {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  display: block;
+  background: linear-gradient(45deg, #ffffff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideInFromLeft 1s ease-out;
+}
+
+.of-experience {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 500;
+  margin-top: 8px;
+  animation: slideInFromRight 1s ease-out 0.4s both;
+  transition: color 0.6s ease;
+}
+
+.name-only {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  animation: nameGlow 1.2s ease-in-out;
+  background: linear-gradient(45deg, #ffffff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.final-name {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  background: linear-gradient(45deg, #ffffff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: finalNameAnimation 1.5s ease-out;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Description Circles - Glassmorphism - Equidistant with 6 circles */
+.descriptions-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+}
+
+.description-circle {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(31, 38, 135, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 15px;
+  animation: circleAppear 1.5s ease-out both, floatCircle 6s ease-in-out infinite;
+  line-height: 1.2;
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hexagonal layout - 6 circles equidistant around the center */
+.circle-1 {
+  top: calc(50% - 250px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle-2 {
+  top: calc(50% - 125px);
+  left: calc(50% + 216px);
+  transform: translate(-50%, -50%);
+}
+
+.circle-3 {
+  top: calc(50% + 125px);
+  left: calc(50% + 216px);
+  transform: translate(-50%, -50%);
+}
+
+.circle-4 {
+  top: calc(50% + 250px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle-5 {
+  top: calc(50% + 125px);
+  left: calc(50% - 216px);
+  transform: translate(-50%, -50%);
+}
+
+.circle-6 {
+  top: calc(50% - 125px);
+  left: calc(50% - 216px);
+  transform: translate(-50%, -50%);
+}
+
+/* Buttons Container */
+.buttons-container {
+  position: absolute;
+  bottom: 12vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+  animation: buttonsAppear 1.5s ease-out 0.5s both;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+/* Enhanced Animations */
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes textTransform {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes nameGlow {
+  0% {
+    text-shadow: none;
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    transform: scale(1.02);
+  }
+  100% {
+    text-shadow: none;
+    transform: scale(1);
+  }
+}
+
+@keyframes finalNameAnimation {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  80% {
+    transform: scale(0.98);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes circleAppear {
+  from {
+    transform: translate(-50%, -50%) scale(0) rotate(-90deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(10deg);
+    opacity: 0.8;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes floatCircle {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-15px);
+  }
+}
+
+@keyframes buttonsAppear {
+  from {
+    transform: translateX(-50%) translateY(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-base {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-base.large-circle {
+    width: 350px;
+    height: 350px;
+  }
+
+  .descriptions-container {
+    width: 550px;
+    height: 550px;
+  }
+
+  .description-circle {
+    width: 120px;
+    height: 120px;
+    font-size: 0.75rem;
+    padding: 12px;
+  }
+
+  .circle-1 {
+    top: calc(50% - 196px);
+  }
+
+  .circle-2 {
+    top: calc(50% - 98px);
+    left: calc(50% + 170px);
+  }
+
+  .circle-3 {
+    top: calc(50% + 98px);
+    left: calc(50% + 170px);
+  }
+
+  .circle-4 {
+    top: calc(50% + 196px);
+  }
+
+  .circle-5 {
+    top: calc(50% + 98px);
+    left: calc(50% - 170px);
+  }
+
+  .circle-6 {
+    top: calc(50% - 98px);
+    left: calc(50% - 170px);
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    bottom: 10vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-base {
+    width: 260px;
+    height: 260px;
+  }
+
+  .hero-base.large-circle {
+    width: 340px;
+    height: 340px;
+  }
+
+  .descriptions-container {
+    width: 450px;
+    height: 450px;
+  }
+
+  .description-circle {
+    width: 100px;
+    height: 100px;
+    font-size: 0.68rem;
+    padding: 10px;
+  }
+
+  .circle-1 {
+    top: calc(50% - 160px);
+  }
+
+  .circle-2 {
+    top: calc(50% - 80px);
+    left: calc(50% + 139px);
+  }
+
+  .circle-3 {
+    top: calc(50% + 80px);
+    left: calc(50% + 139px);
+  }
+
+  .circle-4 {
+    top: calc(50% + 160px);
+  }
+
+  .circle-5 {
+    top: calc(50% + 80px);
+    left: calc(50% - 139px);
+  }
+
+  .circle-6 {
+    top: calc(50% - 80px);
+    left: calc(50% - 139px);
+  }
+
+  .typewriter-text {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+}
+
+/* Dark Mode Specific Styles */
+.hero-section.dark-mode .hero-base {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+}
+
+.hero-section.dark-mode .hero-base.large-circle {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15);
+}
+
+.hero-section.dark-mode .description-circle {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(31, 38, 135, 0.08);
+}
+
+.hero-section.dark-mode .typewriter-text,
+.hero-section.dark-mode .hello-world,
+.hero-section.dark-mode .comma,
+.hero-section.dark-mode .of-experience {
+  color: #aeb3be;
+}
+
+/* Light Mode Specific Styles */
+.hero-section.light-mode .hero-base {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+}
+
+.hero-section.light-mode .hero-base.large-circle {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+}
+
+.hero-section.light-mode .description-circle {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(31, 38, 135, 0.12);
+}
+
+.hero-section.light-mode .typewriter-text,
+.hero-section.light-mode .hello-world,
+.hero-section.light-mode .comma,
+.hero-section.light-mode .of-experience {
+  color: #0D3444;
+}
+
+.hero-section.light-mode .name-text,
+.hero-section.light-mode .years,
+.hero-section.light-mode .name-only,
+.hero-section.light-mode .final-name {
+  background: #d4d5e7;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-section.dark-mode .name-text,
+.hero-section.dark-mode .years,
+.hero-section.dark-mode .name-only,
+.hero-section.dark-mode .final-name {
+  background: linear-gradient(45deg, #ffffff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  transform: rotate(45deg);
+  animation: scrollAnim 1.5s infinite;
+  opacity: 0;
+}
+
+.arrow:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.arrow:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.arrow:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes scrollAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(8px) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(16px) rotate(45deg);
+  }
+}

@@ -4,46 +4,15 @@
   background-size: 400% 400%;
   background-position: 0% 50%;
   animation: gradient 15s ease infinite;
-  min-height: 100vh; /* allow page to grow */
+  min-height: 100vh;
   font-family: 'Unna', serif;
   transition: all 0.4s ease-in-out;
-  padding-bottom: 50px; /* optional for spacing at bottom */
+  padding-bottom: 50px;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Toggle button */
-.ModeToggle {
-  width: 30px;
-  height: 30px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-/* Light Mode */
-.light-mode {
-  background-image: linear-gradient(-45deg, #BBE1F2, #98D2EB, #77C3E4, #55B4DD, #33A5D7, #000);
-  color: #0D3444;
-}
-
-.light-mode .ModeToggle {
-  background-image: url('./ReqdImgs/Sun2.png');
-}
-
-/* Dark Mode */
-.dark-mode {
-  background-image: linear-gradient(-45deg, #312025, #25181C, #191013, #0C0809, #FFF);
-  color: #BAA0AC;
-}
-
-.dark-mode .ModeToggle {
-  background-image: url('./ReqdImgs/Moon2.png');
-}
-
+/* Gradient animation for Background Starts*/
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -58,66 +27,210 @@
   }
 }
 
+/* Gradient animation for Background Ends*/
 
-/* Google Fonts Starts */
-/* Importing Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Namdhinggo:wght@400;500;600;700;800&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Light Mode Starts */
+.light-mode {
+  /*background-image: linear-gradient(-45deg, #4ebfd5, #65bfd1, #69a3d5, #7490d1, #8c8fcc); */
+  /*background-image: linear-gradient(-45deg, #004BA8, #007EA7, #657ED4, #593C8F, #F15156); /*ONE*/
+  /*background-image: linear-gradient(-45deg, #004BA8, #007EA7, #657ED4, #593C8F, #FCFAF9); /*TWO*/
+  /*background-image: linear-gradient(-45deg, #004BA8, #7490d1, #8E54E9, #4776E6, #FCFAF9);*/
+/*background-image: linear-gradient(-45deg, #fc466b, #3f5efb, #7490d1, #00c6ff, #0072ff);*/
+/*background-image: linear-gradient(-45deg, #A245AA, #A35CEF, #7490D1, #6A96FE, #4FC5EF);
 
-/* Font Classes */
-.unna-regular {
-  font-family: "Unna", serif;
-  font-weight: 400;
-  font-style: normal;
+
+background-image: linear-gradient(-45deg, #5680E9, #84CEEB, #5AB9EA, #C1C8E4, #8860D0); */
+
+/* BEST SO FAR background-image: linear-gradient(-45deg, #4F1659, #6B4198, #6985C5, #5D7CCB, #34AAD4); */
+/* fANCY PINK BLUE background-image: linear-gradient(-45deg, #D83F87, #2A1B3D, #44318D, #E98074, #A4B3B6);
+
+TRY 
+#24C6DC -> #514A9D
+#5C258D -> #4389A2
+#77A1D3 -> #79CBCA -> #E684AE
+*/
+
+background-image: linear-gradient(-45deg, #B06AB3, #4568DC, #5E75E4, #5F42B7, #7490d1);
+
+  /*color: #0D3444;*/
+  color: #0D3444;
+
 }
 
-.unna-bold {
-  font-family: "Unna", serif;
-  font-weight: 700;
-  font-style: normal;
+.light-mode .ModeToggle {
+  background-image: url('./ReqdImgs/Sun2.png');
 }
 
-.unna-regular-italic {
-  font-family: "Unna", serif;
-  font-weight: 400;
-  font-style: italic;
+/* Light Mode Ends */
+
+/* Dark Mode Starts */
+.dark-mode {
+  background-image: linear-gradient(-45deg, #130000, #0f0118, #0a0321, #081124, #1b0202);
+  color: #aeb3be;
 }
 
-.unna-bold-italic {
-  font-family: "Unna", serif;
-  font-weight: 700;
-  font-style: italic;
+.dark-mode .ModeToggle {
+  background-image: url('./ReqdImgs/Moon2.png');
 }
 
-.namdhinggo-regular {
-  font-family: "Namdhinggo", serif;
-  font-weight: 400;
-  font-style: normal;
+/* Dark Mode Ends */
+
+/* Theme Transition Explosion Effect Starts */
+.theme-transition {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 2000;
+  transform: scale(1);
+  transform-origin: center;
+  animation: explode 0.8s forwards;
 }
 
-.namdhinggo-medium {
-  font-family: "Namdhinggo", serif;
-  font-weight: 500;
-  font-style: normal;
+.theme-transition.to-dark {
+  background-color: #000;
 }
 
-.namdhinggo-semibold {
-  font-family: "Namdhinggo", serif;
-  font-weight: 600;
-  font-style: normal;
+.theme-transition.to-light {
+  background-color: #fff;
 }
 
-.namdhinggo-bold {
-  font-family: "Namdhinggo", serif;
-  font-weight: 700;
-  font-style: normal;
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  20% {
+    transform: scale(1.5);
+    opacity: 0.9;
+  }
+
+  40% {
+    transform: scale(2.5);
+    opacity: 0.7;
+  }
+
+  60% {
+    transform: scale(5);
+    opacity: 0.4;
+  }
+
+  80% {
+    transform: scale(10);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: scale(100);
+    opacity: 0;
+  }
 }
 
-.namdhinggo-extrabold {
-  font-family: "Namdhinggo", serif;
-  font-weight: 800;
-  font-style: normal;
-}
+/* Theme Transition Explosion Effect Ends */
 
-/*Google Fonts Ends */
+/* Section padding */
+.section-padding {
+  padding: 80px 0;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 /* Main Page CSS Ends */
+
+/* Main content padding to accommodate sidebar - CustomNav */
+.main-content {
+  padding-left: 0;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+/* Add this for spacing if needed later */
+@media (min-width: 769px) {
+  .main-content .container {
+    padding-left: 80px;
+  }
+}
+
+/* NetworkBackground Animation Enhancement */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.8;
+  }
+}
+
+/* Make content areas slightly translucent for better background visibility */
+.section-content {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for content areas */
+.section-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure CustomNav is above hero when scrolling */
+.custom-nav {
+  z-index: 1001;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: calc(var(--scroll-progress, 0) * 100%);
+  z-index: 9999;
+  transition: width 0.25s ease-out;
+  box-shadow: 0 0 10px rgba(46, 196, 182, 0.5);
+}
+
+/* Light mode colors */
+.light-mode .scroll-progress-bar {
+  background: linear-gradient(90deg, #fff, #eff5f7);
+  box-shadow: 0 0 10px rgba(13, 52, 68, 0.5);
+}
+
+/* Dark mode colors */
+.dark-mode .scroll-progress-bar {
+  background: linear-gradient(90deg, #7490d1, #6f8dd4);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.section-padding {
+  scroll-margin-top: 20vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure hero is full screen and scrollable space is preserved */
+.hero-spacer {
+  height: 210vh;
+  /* enough for all scroll stages of HeroSection */
+}
+
+#home {
+  margin-top: 210vh !important;
+  /* ensures proper spacing */
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
