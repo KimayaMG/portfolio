@@ -14,8 +14,16 @@
   pointer-events: none;
 }
 
-.hero-section.theme-transitioning {
-  transition: none;
+/* Hero Content Container */
+.hero-content {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
 }
 
 .hero-section.scrolling-out {
@@ -23,15 +31,6 @@
   opacity: 0;
   z-index: 500;
   transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.hero-section.full-viewport {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 1000;
 }
 
 /* Stage 1: Typewriter Animation */
@@ -61,18 +60,6 @@
   51%, 100% {
     opacity: 0;
   }
-}
-
-/* Hero Content Container */
-.hero-content {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: auto;
 }
 
 /* Hero Base (Circle) - Glassmorphism */
@@ -169,7 +156,6 @@
 }
 
 .experience-text {
-  animation: textTransform 1.5s ease-in-out;
   transition: all 0.8s ease;
 }
 
@@ -245,7 +231,6 @@
   transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Hexagonal layout - 6 circles equidistant around the center */
 .circle-1 {
   top: calc(50% - 250px);
   left: 50%;
@@ -295,7 +280,7 @@
   pointer-events: auto;
 }
 
-/* Enhanced Animations */
+/* Animations */
 @keyframes slideInFromTop {
   from {
     transform: translateY(-60px);
@@ -345,25 +330,6 @@
     opacity: 0;
   }
   to {
-    opacity: 1;
-  }
-}
-
-@keyframes textTransform {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  30% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-  70% {
-    transform: scale(1.08);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1);
     opacity: 1;
   }
 }

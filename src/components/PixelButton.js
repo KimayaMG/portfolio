@@ -96,57 +96,11 @@ function getEffectiveSpeed(value, reducedMotion) {
   }
 }
 
-const VARIANTS = {
-  default: {
-    activeColor: null,
-    gap: 5,
-    speed: 35,
-    colors: "#f8fafc,#f1f5f9,#cbd5e1",
-    noFocus: false
-  },
-  blue: {
-    activeColor: "#e0f2fe",
-    gap: 10,
-    speed: 25,
-    colors: "#e0f2fe,#7dd3fc,#0ea5e9",
-    noFocus: false
-  },
-  yellow: {
-    activeColor: "#fef08a",
-    gap: 3,
-    speed: 20,
-    colors: "#fef08a,#fde047,#eab308",
-    noFocus: false
-  },
-  pink: {
-    activeColor: "#fecdd3",
-    gap: 6,
-    speed: 80,
-    colors: "#fecdd3,#fda4af,#e11d48",
-    noFocus: true
-  },
-  white: {
-    activeColor: "#ffffff",
-    gap: 5,
-    speed: 35,
-    colors: "#ffffff,#e0e0e0,#cccccc",
-    noFocus: false
-  },
-  myTheme: {
-    activeColor: "#7490d1",
-    gap: 5,
-    speed: 35,
-    colors: "#7490d1,#0D3444,#4ebfd5",
-    noFocus: false
-  }
-};
-
 const PixelButton = ({
-  variant = "default",
-  gap,
-  speed,
+  gap = 5,
+  speed = 35,
   colors,
-  noFocus,
+  noFocus = false,
   className = "",
   children,
   href,
@@ -170,22 +124,16 @@ const PixelButton = ({
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
   ).current;
 
-  // Get colors based on mode and variant
+  // Get colors based on mode
   const getColors = useCallback(() => {
     if (isDarkMode) {
-      //return "#00e5ff,#0dc9e5,#08a5c7"; // Cyan variations for dark mode
-      return " #7490d1, #A7B9E4, #6F8DD3";
+      return "#7490d1,#A7B9E4,#6F8DD3";
     } else {
-      //return "#0D3444,#193b52,#4ebfd5"; // Blue variations for light mode
-      return " #ffffff, #e0e0e0, #cccccc";
+      return "#ffffff,#e0e0e0,#cccccc";
     }
   }, [isDarkMode]);
 
-  const variantCfg = VARIANTS[variant] || VARIANTS.default;
-  const finalGap = gap ?? variantCfg.gap;
-  const finalSpeed = speed ?? variantCfg.speed;
   const finalColors = colors ?? getColors();
-  const finalNoFocus = noFocus ?? variantCfg.noFocus;
 
   const initPixels = useCallback(() => {
     if (!containerRef.current || !canvasRef.current) return false;
@@ -213,8 +161,8 @@ const PixelButton = ({
     const colorsArray = finalColors.split(",").map(color => color.trim());
     const pxs = [];
 
-    for (let x = 0; x < width; x += parseInt(finalGap, 10)) {
-      for (let y = 0; y < height; y += parseInt(finalGap, 10)) {
+    for (let x = 0; x < width; x += parseInt(gap, 10)) {
+      for (let y = 0; y < height; y += parseInt(gap, 10)) {
         const color = colorsArray[Math.floor(Math.random() * colorsArray.length)];
         const dx = x - width / 2;
         const dy = y - height / 2;
@@ -223,12 +171,12 @@ const PixelButton = ({
 
         pxs.push(
           new Pixel(
-            { width, height }, // Pass dimensions object instead of canvas
+            { width, height },
             ctx,
             x,
             y,
             color,
-            getEffectiveSpeed(finalSpeed, reducedMotion),
+            getEffectiveSpeed(speed, reducedMotion),
             delay
           )
         );
@@ -238,7 +186,7 @@ const PixelButton = ({
     pixelsRef.current = pxs;
     isInitializedRef.current = true;
     return true;
-  }, [finalGap, finalSpeed, finalColors, reducedMotion]);
+  }, [gap, speed, finalColors, reducedMotion]);
 
   const doAnimate = useCallback((fnName) => {
     if (!canvasRef.current || !isInitializedRef.current || pixelsRef.current.length === 0) {
@@ -438,9 +386,9 @@ const PixelButton = ({
         download={download}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        onFocus={finalNoFocus ? undefined : onFocus}
-        onBlur={finalNoFocus ? undefined : onBlur}
-        tabIndex={finalNoFocus ? -1 : 0}
+        onFocus={noFocus ? undefined : onFocus}
+        onBlur={noFocus ? undefined : onBlur}
+        tabIndex={noFocus ? -1 : 0}
       >
         <ButtonContent />
       </a>
@@ -454,9 +402,9 @@ const PixelButton = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onFocus={finalNoFocus ? undefined : onFocus}
-      onBlur={finalNoFocus ? undefined : onBlur}
-      tabIndex={finalNoFocus ? -1 : 0}
+      onFocus={noFocus ? undefined : onFocus}
+      onBlur={noFocus ? undefined : onBlur}
+      tabIndex={noFocus ? -1 : 0}
     >
       <ButtonContent />
     </div>

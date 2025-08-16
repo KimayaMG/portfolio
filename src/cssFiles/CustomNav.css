@@ -19,12 +19,10 @@
   /* Dark/Light mode styles for the floating nav */
   .dark-mode .float-nav {
     backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);
-    /*border: 1px solid rgba(116, 144, 209, 0.2);*/
   }
   
   .light-mode .float-nav {
     backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(255, 255, 255, 0.2);
-    /*border: 1px solid rgba(78, 191, 213, 0.2);*/
   }
   
   /* Navigation Icons Container */
@@ -216,7 +214,7 @@
     }
   }
   
-  /* Update main content padding for the floating nav */
+  /* Update main content padding for the floating nav 
   .main-content {
     padding-left: 0 !important;
-  }
+  } */

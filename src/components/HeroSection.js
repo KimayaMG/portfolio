@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import PixelButton from './PixelButton';
 import '../cssFiles/HeroSection.css';
+import resumePDF from '../KimayaGaikwad.pdf';
 
 const HeroSection = ({ isDarkMode }) => {
   const [stage, setStage] = useState(1);
@@ -11,14 +12,14 @@ const HeroSection = ({ isDarkMode }) => {
   const heroRef = useRef(null);
   const fullText = "Hello World";
 
-  // Adjusted section breaks for smoother transitions
-  const sectionBreaks = {
+  //Adjusted section breaks for smoother transitions between animation sections
+  const sectionBreaks = useMemo(() => ({
     stage0: 0,
     stage1: window.innerHeight * 0.8,
     stage2: window.innerHeight * 1.8,
     stage3: window.innerHeight * 2.8,
     hide: window.innerHeight * 3.2
-  };
+  }), []);
 
   const descriptions = [
     "Skilled Java Developer",
@@ -29,7 +30,7 @@ const HeroSection = ({ isDarkMode }) => {
     "Resilient Under Pressure"
   ];
 
-  // Typewriter effect
+  //Typewriter effect for "Hello World"
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
@@ -44,24 +45,24 @@ const HeroSection = ({ isDarkMode }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // Stage progression
+  //For stage progression
   useEffect(() => {
     if (stage === 2) {
       setTimeout(() => setStage(3), 1500);
     }
   }, [stage]);
 
-  // Scroll handling
+  //Handled Scrolling
   useEffect(() => {
     const onScroll = () => {
       const scrollY = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
-      // Update scroll progress
+      //Updating scroll progress
       const scrollProgress = Math.min(scrollY / maxScroll, 1);
       document.documentElement.style.setProperty('--scroll-progress', scrollProgress);
 
-      // Determine scroll stage based on scroll position with smooth transitions
+      //Determining scroll stage based on scroll position
       let newScrollStage = 0;
       if (scrollY >= sectionBreaks.stage3) {
         newScrollStage = 3;
@@ -71,34 +72,26 @@ const HeroSection = ({ isDarkMode }) => {
         newScrollStage = 1;
       }
 
-      // Only update if stage actually changed
       if (newScrollStage !== scrollStage) {
         setScrollStage(newScrollStage);
       }
 
-      // Handle hero hiding with proper animation timing
+      //Handling hero hiding with timing
       if (scrollY >= sectionBreaks.hide && !shouldHideHero && !isAnimatingOut) {
         setIsAnimatingOut(true);
         setTimeout(() => {
           setShouldHideHero(true);
           setIsAnimatingOut(false);
-          // Dispatch event to notify App component
-          window.dispatchEvent(new CustomEvent('heroStateChange', {
-            detail: { shouldHideHero: true }
-          }));
         }, 1500);
       } else if (scrollY < sectionBreaks.hide && shouldHideHero) {
         setShouldHideHero(false);
         setIsAnimatingOut(false);
-        window.dispatchEvent(new CustomEvent('heroStateChange', {
-          detail: { shouldHideHero: false }
-        }));
       }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Initial scroll position check
+    //Initial scroll position check
     onScroll();
 
     return () => {
@@ -106,9 +99,10 @@ const HeroSection = ({ isDarkMode }) => {
     };
   }, [scrollStage, shouldHideHero, isAnimatingOut, sectionBreaks]);
 
+  //Downloading Resume
   const downloadResume = () => {
     const link = document.createElement('a');
-    link.href = './KimayaGaikwad.pdf';
+    link.href = resumePDF;
     link.download = 'KimayaGaikwad_Resume.pdf';
     document.body.appendChild(link);
     link.click();
