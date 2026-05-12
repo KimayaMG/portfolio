@@ -1,13 +1,4 @@
-/*Colors 
-#0D3444
-#aeb3be
-#d4d5e7
-#7490d1
-#aeb3be
-*/
-
-
-.experience-section {
+.education-section {
     padding: 40px 20px;
     max-width: 90%;
     margin: 0 auto;
@@ -16,7 +7,7 @@
     align-items: center;
 }
 
-.experience-container {
+.education-container {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -24,14 +15,14 @@
     max-width: 1200px;
 }
 
-.experience-card {
+.education-card {
     position: relative;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
 }
 
-.experience-wrapper {
+.education-wrapper {
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     width: 100%;
@@ -42,21 +33,21 @@
     box-sizing: border-box;
 }
 
-.experience-wrapper.light-mode {
+.education-wrapper.light-mode {
     background: #d4d5e7a5;
 }
 
-.experience-wrapper.dark-mode {
+.education-wrapper.dark-mode {
     background: #7490d133;
 }
 
-.experience-card:hover .experience-wrapper {
+.education-card:hover .education-wrapper {
     transform: perspective(900px) translateY(-1px) rotateX(1deg) translateZ(0);
     box-shadow: 0px 16px 20px #00000025, 0px 6px 8px #00000015;
 }
 
-.experience-wrapper::before,
-.experience-wrapper::after {
+.education-wrapper::before,
+.education-wrapper::after {
     content: "";
     opacity: 0;
     width: 100%;
@@ -68,28 +59,28 @@
     box-shadow: 0px 6px 12px #00000015, 0px 3px 5px #00000010;
 }
 
-.experience-wrapper::before {
+.education-wrapper::before {
     top: 0;
     height: 100%;
     background-image: linear-gradient(to top, transparent 60%, #282b3d20 80%, #0c0d1330 95%);
 }
 
-.experience-wrapper::after {
+.education-wrapper::after {
     bottom: 0;
     opacity: 1;
     background-image: linear-gradient(to bottom, transparent 46%, #0c0d1380 68%, #0c0d13 97%);
 }
 
-.experience-card:hover .experience-wrapper::before,
-.experience-wrapper::after {
+.education-card:hover .education-wrapper::before,
+.education-wrapper::after {
     opacity: 1;
 }
 
-.experience-card:hover .experience-wrapper::after {
+.education-card:hover .education-wrapper::after {
     height: 80px;
 }
 
-.experience-content {
+.education-content {
     position: relative;
     z-index: 10;
     height: 100%;
@@ -97,7 +88,7 @@
     flex-direction: column;
 }
 
-.experience-header {
+.education-header {
     margin-bottom: 30px;
 }
 
@@ -109,7 +100,7 @@
     text-align: center;
 }
 
-.company {
+.institution {
     font-size: 20px;
     font-weight: 600;
     margin: 0 0 15px 0;
@@ -117,35 +108,35 @@
     text-align: center;
 }
 
-.experience-meta {
+.education-meta {
     display: flex;
     justify-content: center;
     gap: 30px;
     margin-bottom: 20px;
 }
 
-.duration,
-.location {
-    font-size: 16px;
-    font-weight: 500;
+.year,
+.grade {
+    font-size: 20px;
+    font-weight: 600;
     color: #5a6c7d;
 }
 
-.experience-wrapper.light-mode .position {
+.education-wrapper.light-mode .degree {
     color: #0D3444;
 }
 
-.experience-wrapper.dark-mode .position {
+.education-wrapper.dark-mode .degree {
     color: #aeb3be;
 }
 
-.experience-wrapper.light-mode .duration,
-.experience-wrapper.light-mode .location {
+.education-wrapper.light-mode .year,
+.education-wrapper.light-mode .grade {
     color: #0D3444;
 }
 
-.experience-wrapper.dark-mode .duration,
-.experience-wrapper.dark-mode .location {
+.education-wrapper.dark-mode .year,
+.education-wrapper.dark-mode .grade {
     color: #aeb3be;
 }
 
@@ -153,10 +144,77 @@
     flex: 1;
 }
 
+.achievements-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    box-shadow: 0px 3px 8px #00000020;
+    white-space: nowrap;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.achievements-toggle.light-mode {
+    background: #d4d5e7;
+    color: #7490d1;
+}
+
+.achievements-toggle.dark-mode {
+    background: #7490d133;
+    color: #7490d1;
+}
+
+.achievements-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 20px;
+}
+
+.arrow {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #7490d1;
+    border-bottom: 2px solid #7490d1;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.arrow.expanded {
+    transform: rotate(-135deg);
+}
+
+.achievements-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.achievements-list.expanded {
+    max-height: 1000px;
+}
+
 .achievements ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    padding-top: 10px;
 }
 
 .achievements li {
@@ -167,7 +225,6 @@
     line-height: 1.6;
     color: #4a5568;
     font-weight: 400;
-    text-align: justify;
 }
 
 .achievements li::before {
@@ -180,85 +237,129 @@
     font-size: 18px;
 }
 
-.experience-wrapper.light-mode .achievements li {
+.education-wrapper.light-mode .achievements li {
     color: #0D3444;
 }
 
-.experience-wrapper.dark-mode .achievements li {
+.education-wrapper.dark-mode .achievements li {
     color: #aeb3be;
 }
 
 @media (max-width: 1200px) {
-    .experience-wrapper {
+    .education-wrapper {
         padding: 35px;
         min-height: 380px;
     }
 
-    .position {
+    .degree {
         font-size: 26px;
     }
 
-    .company {
+    .institution {
+        font-size: 18px;
+    }
+
+    .year,
+    .grade {
         font-size: 18px;
     }
 
     .achievements li {
         font-size: 15px;
     }
+
+    .achievements-toggle {
+        width: 70%;
+        padding: 12px 18px;
+        font-size: 17px;
+    }
 }
 
 @media (max-width: 768px) {
-    .experience-section {
+    .education-section {
         padding: 30px 15px;
     }
 
-    .experience-wrapper {
+    .education-wrapper {
         padding: 30px;
         min-height: 350px;
     }
 
-    .position {
+    .degree {
         font-size: 24px;
     }
 
-    .company {
+    .institution {
         font-size: 17px;
     }
 
-    .experience-meta {
+    .education-meta {
         flex-direction: column;
         gap: 10px;
         text-align: center;
+    }
+
+    .year,
+    .grade {
+        font-size: 16px;
     }
 
     .achievements li {
         font-size: 14px;
         margin-bottom: 12px;
     }
+
+    .achievements-toggle {
+        font-size: 16px;
+        padding: 12px 16px;
+        width: 80%;
+    }
+
+    .arrow-container {
+        right: 16px;
+    }
 }
 
 @media (max-width: 480px) {
-    .experience-wrapper {
+    .education-wrapper {
         padding: 25px;
         min-height: 320px;
         border-radius: 16px;
     }
 
-    .position {
+    .degree {
         font-size: 22px;
     }
 
-    .company {
+    .institution {
         font-size: 16px;
     }
 
-    .duration,
-    .location {
-        font-size: 14px;
+    .year,
+    .grade {
+        font-size: 15px;
     }
 
     .achievements li {
         font-size: 13px;
         padding-left: 20px;
     }
+
+    .achievements-toggle {
+        font-size: 15px;
+        padding: 10px 14px;
+        width: 90%;
+    }
+
+    .arrow-container {
+        right: 14px;
+    }
 }
+
+/*Colors 
+#0D3444
+#aeb3be
+#d4d5e7
+#7490d1
+#aeb3be
+*/

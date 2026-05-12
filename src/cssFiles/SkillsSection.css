@@ -1,5 +1,5 @@
 .skills-section {
-    padding: 40px 20px;
+    padding: 40px 40px;
     max-width: 90%;
     margin: 0 auto;
     display: flex;
@@ -9,16 +9,17 @@
 
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 20px 35px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
     justify-items: center;
     align-items: center;
     position: relative;
+    width: 100%;
 }
 
 .tile {
-    width: 90px;
-    height: 90px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     position: relative;
     display: flex;
     justify-content: center;
@@ -27,6 +28,7 @@
     border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
+    box-sizing: border-box;
 }
 
 .skills-container:hover .tile:not(:hover) {
@@ -48,7 +50,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 .wrapper {
@@ -128,12 +129,12 @@
     box-shadow: 0px 3px 8px #00000020;
 }
 
-.wrapper.light-mode~.skillName {
+.wrapper.light-mode ~ .skillName {
     background: #d4d5e7;
     color: #7490d1;
 }
 
-.wrapper.dark-mode~.skillName {
+.wrapper.dark-mode ~ .skillName {
     background: #7490d133;
     color: #7490d1;
 }
@@ -164,7 +165,6 @@
     border-radius: 16px;
     padding: 8px;
     filter: drop-shadow(0 0 20px #7490d1) drop-shadow(0 0 1px #d4d5e7a5) drop-shadow(0 0 1px #7490d133);
-
 }
 
 .tile:hover .poppedUpSkillLogo {
@@ -173,46 +173,17 @@
     transform: translate(-50%, -80%) scale(1.2);
 }
 
-@media (max-width: 1600px) {
-    .skills-container {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 50px 25px;
-        /* Maintained increased column gap */
-    }
-
-    .tile {
-        width: 180px;
-        height: 180px;
-    }
-}
-
 @media (max-width: 1200px) {
     .skills-container {
         grid-template-columns: repeat(4, 1fr);
-        gap: 25px 20px;
-        /* Maintained increased column gap */
-    }
-
-    .tile {
-        width: 190px;
-        height: 190px;
-    }
-
-    .poppedUpSkillLogo {
-        width: 180%;
-        max-height: 140px;
+        gap: 20px;
     }
 }
 
 @media (max-width: 900px) {
     .skills-container {
         grid-template-columns: repeat(3, 1fr);
-        gap: 25px 18px;
-    }
-
-    .tile {
-        width: 180px;
-        height: 180px;
+        gap: 18px;
     }
 
     .skillName {
@@ -221,40 +192,24 @@
 }
 
 @media (max-width: 600px) {
+    .skills-section {
+        padding: 30px 20px;
+    }
+
     .skills-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 25px 15px;
-    }
-
-    .tile {
-        width: 200px;
-        height: 200px;
-    }
-
-    .poppedUpSkillLogo {
-        width: 200%;
-        max-height: 160px;
+        gap: 15px;
     }
 }
 
 @media (max-width: 400px) {
     .skills-container {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .tile {
-        width: 240px;
-        height: 240px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .skillName {
-        font-size: 16px;
-        bottom: -22px;
-    }
-
-    .poppedUpSkillLogo {
-        width: 220%;
-        max-height: 180px;
+        font-size: 13px;
+        bottom: -18px;
     }
 }

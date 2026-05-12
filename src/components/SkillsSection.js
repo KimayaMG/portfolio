@@ -1,7 +1,6 @@
 import React from 'react';
 import '../cssFiles/SkillsSection.css';
 
-//Importing Images
 import javaLogo from '../ReqdImgs/JavaLogo.png';
 import mysqlLogo from '../ReqdImgs/MySQLLogo.png';
 import HibernateLogo from '../ReqdImgs/HibernateLogo.svg';
@@ -17,66 +16,18 @@ import OpenCMSLogo from '../ReqdImgs/OpenCMSLogo.svg';
 
 const SkillsSection = ({ isDarkMode }) => {
   const skills = [
-    {
-      id: 1,
-      name: 'Java',
-      skillLogo: javaLogo
-    },
-    {
-      id: 2,
-      name: 'MySQL',
-      skillLogo: mysqlLogo
-    },
-    {
-      id: 3,
-      name: 'HTML5',
-      skillLogo: HTML5Logo
-    },
-    {
-      id: 4,
-      name: 'Hibernate',
-      skillLogo: HibernateLogo
-    },
-    {
-      id: 5,
-      name: 'CSS3',
-      skillLogo: CSS3Logo
-    },
-    {
-      id: 6,
-      name: 'JavaScript',
-      skillLogo: JavaScriptLogo
-    },
-    {
-      id: 7,
-      name: 'React',
-      skillLogo: ReactJSLogo
-    },
-    {
-      id: 8,
-      name: 'Git',
-      skillLogo: GitLogo
-    },
-    {
-      id: 9,
-      name: 'REST API',
-      skillLogo: RESTAPILogo
-    },
-    {
-      id: 10,
-      name: 'Postman',
-      skillLogo: PostmanLogo
-    },
-    {
-      id: 11,
-      name: 'Release Management',
-      skillLogo: ReleaseManagementLogo
-    },
-    {
-      id: 12,
-      name: 'OpenCMS',
-      skillLogo: OpenCMSLogo
-    }
+    { id: 1,  name: 'Java',               skillLogo: javaLogo },
+    { id: 2,  name: 'MySQL',              skillLogo: mysqlLogo },
+    { id: 3,  name: 'HTML5',              skillLogo: HTML5Logo },
+    { id: 4,  name: 'Hibernate',          skillLogo: HibernateLogo },
+    { id: 5,  name: 'CSS3',               skillLogo: CSS3Logo },
+    { id: 6,  name: 'JavaScript',         skillLogo: JavaScriptLogo },
+    { id: 7,  name: 'React',              skillLogo: ReactJSLogo },
+    { id: 8,  name: 'Git',                skillLogo: GitLogo },
+    { id: 9,  name: 'REST API',           skillLogo: RESTAPILogo },
+    { id: 10, name: 'Postman',            skillLogo: PostmanLogo },
+    { id: 11, name: 'Release Management', skillLogo: ReleaseManagementLogo },
+    { id: 12, name: 'OpenCMS',            skillLogo: OpenCMSLogo },
   ];
 
   return (

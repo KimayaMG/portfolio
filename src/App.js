@@ -7,6 +7,8 @@ import HeroSection from './components/HeroSection';
 import SkillsSection from './components/SkillsSection';
 import ProjectsSection from './components/ProjectsSection';
 import ExperienceSection from './components/ExperienceSection';
+import EducationSection from './components/EducationSection';
+import ContactSection from './components/ContactSection';
 
 //Background Options
 import WaveBackground from './components/WaveBackground';
@@ -19,6 +21,17 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionPosition, setTransitionPosition] = useState({ x: 0, y: 0 });
+
+  //Scrolling Progress Bar Logic
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      document.documentElement.style.setProperty('--scroll-progress', scrolled);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Detect user's theme preference and listen for changes
   useEffect(() => {
@@ -81,19 +94,20 @@ function App() {
       <section id="home">
         <HeroSection isDarkMode={isDarkMode} />
       </section>
-      
+
       <div className="hero-spacer" />
       <div className={`scroll-progress-bar ${isDarkMode ? 'dark-mode' : 'light-mode'}`} />
 
       <div className="main-content">
         <Container>
-          <section id="about" className="section-padding">
+          {/* <section id="about" className="section-padding">
             <div className="section-content">
               <h1>About</h1>
               <p>Learn more about me, my background, and what drives my passion for development.</p>
               <div style={{ height: "30vh" }} />
             </div>
           </section>
+          */}
 
           <section id="skills" className="section-padding">
             <div className="section-content">
@@ -121,16 +135,16 @@ function App() {
           <section id="education" className="section-padding">
             <div className="section-content">
               <h1>Education</h1>
-              <ExperienceSection isDarkMode={isDarkMode} />
+              <EducationSection isDarkMode={isDarkMode} />
               <div style={{ height: "30vh" }} />
             </div>
           </section>
 
           <section id="contact" className="section-padding">
-            <div className="section-content">
-              <h1>Contact</h1>
-              <p>Get in touch with me for opportunities and collaborations.</p>
-              <div style={{ height: "30vh" }} />
+           <div className="section-content">
+              <h1>Fire Away</h1>
+              <label> Code or conversation, I'm listening. </label>
+              <ContactSection isDarkMode={isDarkMode} />
             </div>
           </section>
         </Container>

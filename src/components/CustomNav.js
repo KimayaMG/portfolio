@@ -4,60 +4,82 @@ import '../cssFiles/CustomNav.css';
 const CustomNav = ({ isDarkMode, toggleMode }) => {
   const [activeSection, setActiveSection] = useState('home');
   const [navExpanded, setNavExpanded] = useState(false);
-  
-  //Nav items with their corresponding icons - wrapped in useMemo
+
+  // Nav items with their corresponding icons - wrapped in useMemo
   const navItems = useMemo(() => [
     { id: 'home', icon: 'fa-home' },
-    { id: 'about', icon: 'fa-user' },
+    // { id: 'about', icon: 'fa-user' },
     { id: 'skills', icon: 'fa-code' },
     { id: 'projects', icon: 'fa-folder' },
     { id: 'experience', icon: 'fa-briefcase' },
+    { id: 'education', icon: 'fa-graduation-cap' },
     { id: 'contact', icon: 'fa-envelope' }
-  ], []); //Empty dependency array means this only runs once
+  ], []);
 
-  //Handling scroll event to detect active section
+  // FIX 1: Improved scroll detection using closest-to-center logic
   useEffect(() => {
     const handleScroll = () => {
-      //Updating active section based on scroll position
+      // FIX 2: If near top of page, force 'home' as active
+      if (window.scrollY < 80) {
+        setActiveSection('home');
+        return;
+      }
+
+      const viewportCenter = window.innerHeight / 2;
+      let closestSection = null;
+      let closestDistance = Infinity;
+
       for (const item of navItems) {
         const element = document.getElementById(item.id);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(item.id);
-            break;
+          const elementCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(elementCenter - viewportCenter);
+
+          // Only consider sections that are at least partially visible
+          if (rect.bottom > 0 && rect.top < window.innerHeight && distance < closestDistance) {
+            closestDistance = distance;
+            closestSection = item.id;
           }
         }
       }
+
+      if (closestSection) {
+        setActiveSection(closestSection);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run once on mount to set correct initial state
+    handleScroll();
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [navItems]); //Now navItems won't change between renders!
+  }, [navItems]);
 
-  //Handling mobile toggle for small screens
   const toggleNav = () => {
-    setNavExpanded(!navExpanded);
+    setNavExpanded(prev => !prev);
   };
 
-  //Custom toggle function that passes the button's position to App.js
+  // Custom toggle function that passes the button's position to App.js
   const handleToggleMode = (e) => {
     const toggleButton = e.currentTarget;
     const rect = toggleButton.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2 - 10;
     const centerY = rect.top + rect.height / 2 - 10;
-    
-    //Calling the parent component's toggle function with position
     toggleMode({ x: centerX, y: centerY });
+  };
+
+  // FIX 3: Close mobile nav when a link is clicked
+  const handleNavLinkClick = () => {
+    if (navExpanded) setNavExpanded(false);
   };
 
   return (
     <>
       {/* Mobile Toggle Button */}
-      <button 
-        className={`mobile-nav-toggle ${navExpanded ? 'active' : ''}`} 
+      <button
+        className={`mobile-nav-toggle ${navExpanded ? 'active' : ''}`}
         onClick={toggleNav}
         aria-label="Toggle Navigation"
       >
@@ -71,18 +93,19 @@ const CustomNav = ({ isDarkMode, toggleMode }) => {
         {/* Navigation Links */}
         <div className="nav-icons">
           {navItems.map((item) => (
-            <a 
+            <a
               key={item.id}
-              href={`#${item.id}`} 
+              href={`#${item.id}`}
               className={activeSection === item.id ? 'active' : ''}
               title={item.id.charAt(0).toUpperCase() + item.id.slice(1)}
+              onClick={handleNavLinkClick}
             >
               <i className={`fas ${item.icon}`}></i>
             </a>
           ))}
         </div>
 
-        {/* Sun - Moon -- Mode Toggle Button */}
+        {/* Sun / Moon Mode Toggle Button */}
         <div className="mode-toggle-container">
           <button
             className="ModeToggle"
@@ -93,7 +116,7 @@ const CustomNav = ({ isDarkMode, toggleMode }) => {
         </div>
       </nav>
 
-      {/* Overlay for mobile */}
+      {/* FIX 4: Overlay - React handles show/hide, no CSS display:none conflict */}
       {navExpanded && (
         <div className="nav-overlay" onClick={toggleNav}></div>
       )}

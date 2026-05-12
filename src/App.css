@@ -133,16 +133,12 @@
   }
 }
 
-/* NetworkBackground Animation Enhancement 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@media (max-width: 768px) {
+  .main-content .container {
+    padding-left: 15px;
+    padding-right: 15px;
   }
-
-  to {
-    opacity: 0.8;
-  }
-} */
+}
 
 /* Making content areas slightly translucent for better background visibility - Background for every section */
 .section-content {
@@ -153,34 +149,43 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin: 0 auto 20px auto;
-  max-width: 80%;
+  /* FIXED: removed min-width: 1200px, use width + max-width instead */
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
   transition: all 0.3s ease-in-out;
-}
-
-/* Making responsive section content width */
-@media (max-width: 1200px) {
-  .section-content {
-    max-width: 85%;
-  }
-}
-
-@media (max-width: 900px) {
-  .section-content {
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 600px) {
-  .section-content {
-    max-width: 95%;
-    padding: 20px;
-  }
 }
 
 /* Hover effect for content areas - Lifting up slightly*/
 .section-content:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive section content */
+@media (max-width: 1300px) {
+  .section-content {
+    max-width: 1100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .section-content {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 900px) {
+  .section-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-content {
+    max-width: 100%;
+    padding: 20px 16px;
+  }
 }
 
 /* Setting CustomNav above hero section when scrolling */
@@ -224,22 +229,56 @@ html {
 /* Ensuring hero is full screen and scrollable space is preserved */
 .hero-spacer {
   height: 210vh;
-  /* enough for all scroll stages of HeroSection */
 }
 
 /* About Section */
 #about {
   margin-top: 210vh !important;
-  /* ensures proper spacing */
   opacity: 1 !important;
   pointer-events: auto !important;
 }
 
 /* Skills Section */
+#skills {
+  margin-top: 210vh !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Reduce hero spacer on mobile so sections don't feel unreachable */
+@media (max-width: 768px) {
+  .hero-spacer {
+    height: 100vh;
+  }
+
+  #about,
+  #skills {
+    margin-top: 100vh !important;
+  }
+
+  .section-padding {
+    padding: 40px 0;
+  }
+}
+
 .skills-section .section-content {
   background: transparent;
   backdrop-filter: none;
   border: none;
   box-shadow: none;
   padding: 0;
+}
+
+/* Contact Section */
+.contact-section .section-content {
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+label {
+  font-size: 20px;
+  font-weight: 600;
 }

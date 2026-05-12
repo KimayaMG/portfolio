@@ -1,220 +1,215 @@
 /* Floating Navigation Styles */
 .float-nav {
-    position: fixed;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 16px;
-    padding: 15px 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
-  /* Dark/Light mode styles for the floating nav */
-  .dark-mode .float-nav {
-    backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .light-mode .float-nav {
-    backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Navigation Icons Container */
-  .nav-icons {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin-bottom: 25px;
-  }
-  
-  /* Navigation Icon Links */
-  .nav-icons a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    position: relative;
-  }
-  
-  /* Hover effects */
-  .light-mode .nav-icons a:hover {
-    background: #d4d5e7;
-    color: #7490d1;
-  }
-  
-  .dark-mode .nav-icons a:hover {
-    background: rgba(116, 144, 209, 0.15);
-    color: #7490d1;
-  }
-  
-  /* Active link styling */
-  .nav-icons a.active {
-    position: relative;
-  }
-  
-  .light-mode .nav-icons a.active {
-    background: #d4d5e7;
-    color : #7490d1;
-    /*color: #4ebfd5; */
-  }
-  
-  .dark-mode .nav-icons a.active {
-    background: rgba(116, 144, 209, 0.2);
-    color: #7490d1;
-  }
-  
-  .light-mode .nav-icons a.active::before {
-    content: '';
-    position: absolute;
-    left: -8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 20px;
-    background: #d4d5e7;
-    border-radius: 0 3px 3px 0;
-  }
-  
-  .dark-mode .nav-icons a.active::before {
-    content: '';
-    position: absolute;
-    left: -8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 20px;
-    background: #7490d1;
-    border-radius: 0 3px 3px 0;
-  }
-  
-  /* Mode Toggle Container */
-  .mode-toggle-container {
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  /* Mode Toggle Button */
-  .ModeToggle {
-    width: 25px;
-    height: 25px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .ModeToggle:hover {
-    transform: rotate(15deg);
-  }
-  
-  /* Mobile Toggle Button */
-  .mobile-nav-toggle {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1002;
-    background: transparent;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-  }
-  
-  .light-mode .mobile-nav-toggle {
-    background: rgba(78, 191, 213, 0.1);
-  }
-  
-  .dark-mode .mobile-nav-toggle {
-    background: rgba(116, 144, 209, 0.1);
-  }
-  
-  .mobile-nav-toggle span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    margin: 2px 0;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-  
-  .light-mode .mobile-nav-toggle span {
-    background: #0D3444;
-  }
-  
-  .dark-mode .mobile-nav-toggle span {
-    background: #aeb3be;
-  }
-  
-  /* Mobile toggle animation */
-  .mobile-nav-toggle.active span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-  
-  .mobile-nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .mobile-nav-toggle.active span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-  
-  /* Overlay for mobile */
-  .nav-overlay {
-    position: fixed;
-    top: 0;
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 16px;
+  padding: 15px 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Dark/Light mode styles for the floating nav */
+.dark-mode .float-nav {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light-mode .float-nav {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation Icons Container */
+.nav-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+/* Navigation Icon Links */
+.nav-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Hover effects */
+.light-mode .nav-icons a:hover {
+  background: #d4d5e7;
+  color: #7490d1;
+}
+
+.dark-mode .nav-icons a:hover {
+  background: rgba(116, 144, 209, 0.15);
+  color: #7490d1;
+}
+
+/* Active link styling */
+.nav-icons a.active {
+  position: relative;
+}
+
+.light-mode .nav-icons a.active {
+  background: #d4d5e7;
+  color: #7490d1;
+}
+
+.dark-mode .nav-icons a.active {
+  background: rgba(116, 144, 209, 0.2);
+  color: #7490d1;
+}
+
+.light-mode .nav-icons a.active::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: #d4d5e7;
+  border-radius: 0 3px 3px 0;
+}
+
+.dark-mode .nav-icons a.active::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: #7490d1;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Mode Toggle Container */
+.mode-toggle-container {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Mode Toggle Button */
+.ModeToggle {
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.ModeToggle:hover {
+  transform: rotate(15deg);
+}
+
+/* Mobile Toggle Button */
+.mobile-nav-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1002;
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.light-mode .mobile-nav-toggle {
+  background: rgba(78, 191, 213, 0.1);
+}
+
+.dark-mode .mobile-nav-toggle {
+  background: rgba(116, 144, 209, 0.1);
+}
+
+.mobile-nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 2px 0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.light-mode .mobile-nav-toggle span {
+  background: #0D3444;
+}
+
+.dark-mode .mobile-nav-toggle span {
+  background: #aeb3be;
+}
+
+/* Mobile toggle animation */
+.mobile-nav-toggle.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.mobile-nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* FIX 4: Removed hardcoded display:none — React conditionally renders this */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Media queries for responsive behavior */
+@media (max-width: 768px) {
+  .float-nav {
+    /* FIX 5: translateX only — translateY(-50%) is re-applied in expanded state */
+    transform: translateX(-100%) translateY(-50%);
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    display: none;
+    top: 50%;
+    border-radius: 0 16px 16px 0;
+    padding: 20px 10px;
   }
-  
-  /* Media queries for responsive behavior */
-  @media (max-width: 768px) {
-    .float-nav {
-      transform: translateX(-100%);
-      left: 0;
-      top: 50%;
-      border-radius: 0 16px 16px 0;
-      padding: 20px 10px;
-    }
-    
-    .float-nav.expanded {
-      transform: translateX(0) translateY(-50%);
-    }
-    
-    .mobile-nav-toggle {
-      display: flex;
-    }
-    
-    .nav-overlay {
-      display: block;
-    }
+
+  /* FIX 5: Both transforms applied together so vertical centering is preserved */
+  .float-nav.expanded {
+    transform: translateX(0) translateY(-50%);
   }
-  
-  /* Update main content padding for the floating nav 
-  .main-content {
-    padding-left: 0 !important;
-  } */
+
+  .mobile-nav-toggle {
+    display: flex;
+  }
+}
