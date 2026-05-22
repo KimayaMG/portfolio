@@ -1,17 +1,32 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.99f036e1.css",
-    "main.js": "/portfolio/static/js/main.f6549cae.js",
+    "main.css": "/portfolio/static/css/main.ead1e7c8.css",
+    "main.js": "/portfolio/static/js/main.6949c8a6.js",
     "static/js/453.1407b060.chunk.js": "/portfolio/static/js/453.1407b060.chunk.js",
+    "static/media/KimayaGaikwad.pdf": "/portfolio/static/media/KimayaGaikwad.2bf68f98ba66fc5a7002.pdf",
+    "static/media/GenAIHealthCareAssistant.png": "/portfolio/static/media/GenAIHealthCareAssistant.99b77dea555404366ea1.png",
+    "static/media/WIP2.png": "/portfolio/static/media/WIP2.d91fef22aec73b991aea.png",
+    "static/media/VocaScroll.png": "/portfolio/static/media/VocaScroll.6c3f9249c00a768b64fc.png",
+    "static/media/ReleaseManagementLogo.png": "/portfolio/static/media/ReleaseManagementLogo.9fbad1e43d84ed146e6a.png",
     "static/media/Moon2.png": "/portfolio/static/media/Moon2.1f11504182db33727439.png",
+    "static/media/GitLogo.png": "/portfolio/static/media/GitLogo.d45f1900d8999721399f.png",
     "static/media/Sun2.png": "/portfolio/static/media/Sun2.880c347d653d4e4faee1.png",
+    "static/media/JavaLogo.png": "/portfolio/static/media/JavaLogo.f91f26619da05654b2b8.png",
+    "static/media/RESTAPILogo.png": "/portfolio/static/media/RESTAPILogo.5d8706d661b4b370a74e.png",
+    "static/media/HTML5Logo.png": "/portfolio/static/media/HTML5Logo.29a8333c2a5fe3107dfa.png",
+    "static/media/CSS3Logo.png": "/portfolio/static/media/CSS3Logo.e54a9e01213df6fcb747.png",
+    "static/media/MySQLLogo.png": "/portfolio/static/media/MySQLLogo.e17ab296b84284a67edc.png",
+    "static/media/PostmanLogo.png": "/portfolio/static/media/PostmanLogo.61c4d357fb4129858e00.png",
+    "static/media/HibernateLogo.svg": "/portfolio/static/media/HibernateLogo.b17e781b49eb26f84276413673d5618f.svg",
+    "static/media/OpenCMSLogo.svg": "/portfolio/static/media/OpenCMSLogo.591c495d9524ae772291da8d66adec69.svg",
+    "static/media/ReactJSLogo.svg": "/portfolio/static/media/ReactJSLogo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/portfolio/index.html",
-    "main.99f036e1.css.map": "/portfolio/static/css/main.99f036e1.css.map",
-    "main.f6549cae.js.map": "/portfolio/static/js/main.f6549cae.js.map",
+    "main.ead1e7c8.css.map": "/portfolio/static/css/main.ead1e7c8.css.map",
+    "main.6949c8a6.js.map": "/portfolio/static/js/main.6949c8a6.js.map",
     "453.1407b060.chunk.js.map": "/portfolio/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.99f036e1.css",
-    "static/js/main.f6549cae.js"
+    "static/css/main.ead1e7c8.css",
+    "static/js/main.6949c8a6.js"
   ]
 }
