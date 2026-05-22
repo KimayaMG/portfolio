@@ -247,14 +247,6 @@ html {
 
 /* Reduce hero spacer on mobile so sections don't feel unreachable */
 @media (max-width: 768px) {
-  .hero-spacer {
-    height: 100vh;
-  }
-
-  #about,
-  #skills {
-    margin-top: 100vh !important;
-  }
 
   .section-padding {
     padding: 40px 0;
